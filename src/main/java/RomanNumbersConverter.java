@@ -28,7 +28,7 @@ public class RomanNumbersConverter {
     // This method is just for error handling
     public String convertToRoman(final int arabicNumber) {
         // ignore invalid
-        if(arabicNumber < 1 || arabicNumber > MAX_VALUE) {
+        if(arabicNumber < MIN_VALUE || arabicNumber > MAX_VALUE) {
             throw new IllegalArgumentException();
         }
         // execute calculation
