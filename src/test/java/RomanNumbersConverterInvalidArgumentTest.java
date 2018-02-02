@@ -8,4 +8,9 @@ public class RomanNumbersConverterInvalidArgumentTest {
         testee.convertToRoman(4000);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void invalidMinTest() {
+        testee.convertToRoman(0);
+    }
+
 }

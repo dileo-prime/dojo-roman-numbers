@@ -1,54 +1,53 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class RomanNumbersConverter {
+
+    public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = 3999;
 
-    public String convertToRoman(final int arabicNumber) {
-        if (MAX_VALUE < arabicNumber) {
-            throw new IllegalArgumentException("Nananananaaa");
-        } else if (arabicNumber == 0) {
-            return "";
-        }
+    private final Map<Integer, String> arabicToRomanMap;
 
-        final StringBuilder sb = new StringBuilder();
-
-        if (arabicNumber <= 3) {
-            sb.append("I");
-            sb.append(convertToRoman(arabicNumber - 1));
-        } else if (arabicNumber == 4) {
-            sb.append("IV");
-        } else if (arabicNumber <= 8) {
-            sb.append("V");
-            sb.append(convertToRoman(arabicNumber - 5));
-        } else if (arabicNumber == 9) {
-            sb.append("IX");
-        } else if (arabicNumber <= 39) {
-            sb.append("X");
-            sb.append(convertToRoman(arabicNumber - 10));
-        } else if (arabicNumber <= 49) {
-            sb.append("XL");
-            sb.append(convertToRoman(arabicNumber - 40));
-        } else if (arabicNumber <= 89) {
-            sb.append("L");
-            sb.append(convertToRoman(arabicNumber - 50));
-        } else if (arabicNumber <= 99) {
-            sb.append("XC");
-            sb.append(convertToRoman(arabicNumber - 90));
-        } else if (arabicNumber <= 399) {
-            sb.append("C");
-            sb.append(convertToRoman(arabicNumber - 100));
-        } else if (arabicNumber <= 499) {
-            sb.append("CD");
-            sb.append(convertToRoman(arabicNumber - 400));
-        } else if (arabicNumber <= 899) {
-            sb.append("D");
-            sb.append(convertToRoman(arabicNumber - 500));
-        }else  if (arabicNumber <= 999) {
-            sb.append("CM");
-            sb.append(convertToRoman(arabicNumber - 900));
-        }else {
-            sb.append("M");
-            sb.append(convertToRoman(arabicNumber - 1000));
-        }
-
-        return sb.toString();
+    public RomanNumbersConverter() {
+        arabicToRomanMap = new HashMap<Integer, String>();
+        arabicToRomanMap.put(1, "I");
+        arabicToRomanMap.put(4, "IV");
+        arabicToRomanMap.put(5, "V");
+        arabicToRomanMap.put(9, "IX");
+        arabicToRomanMap.put(10, "X");
+        arabicToRomanMap.put(40, "XL");
+        arabicToRomanMap.put(50, "L");
+        arabicToRomanMap.put(90, "XC");
+        arabicToRomanMap.put(100, "C");
+        arabicToRomanMap.put(400, "CD");
+        arabicToRomanMap.put(500, "D");
+        arabicToRomanMap.put(900, "CM");
+        arabicToRomanMap.put(1000, "M");
     }
+
+    // This method is just for error handling
+    public String convertToRoman(final int arabicNumber) {
+        // ignore invalid
+        if(arabicNumber < 1 || arabicNumber > MAX_VALUE) {
+            throw new IllegalArgumentException();
+        }
+        // execute calculation
+        return convertToRomanR(arabicNumber);
+    }
+
+    // calculates roman number
+    private String convertToRomanR(final int arabicNumber) {
+        // stop recursion
+        if(arabicNumber == 0) { return ""; }
+
+        // get number from Map that is the closest to arabicNumber (same, smaller)
+        final int nearestNumber = arabicToRomanMap.keySet().stream()
+                .filter(number -> arabicNumber >= number)
+                .max(Integer::compare)
+                .get();
+
+        // recursive call
+        return arabicToRomanMap.get(nearestNumber) + convertToRomanR(arabicNumber - nearestNumber);
+    }
+
 }
