@@ -52,6 +52,7 @@ public class BetterRomanNumbersConverter {
                 if (number >= val) {
                     resultList.add(rv);
                     number -= val;
+                    // leave for-loop
                     break;
                 }
             }
