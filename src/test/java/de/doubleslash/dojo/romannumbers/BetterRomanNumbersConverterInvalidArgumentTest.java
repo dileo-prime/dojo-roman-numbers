@@ -1,14 +1,16 @@
 package de.doubleslash.dojo.romannumbers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class BetterRomanNumbersConverterInvalidArgumentTest {
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class BetterRomanNumbersConverterInvalidArgumentTest {
 
     private final BetterRomanNumbersConverter testee = new BetterRomanNumbersConverter();
 
-    @Test(expected = IllegalArgumentException.class)
-    public void invalidMaxTest() {
-        testee.convertToRoman(4000);
+    @Test()
+    void invalidMaxTest() {
+        assertThrows(IllegalArgumentException.class, () -> testee.convertToRoman(4000));
     }
 
 }
