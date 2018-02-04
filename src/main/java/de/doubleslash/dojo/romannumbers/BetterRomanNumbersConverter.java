@@ -8,6 +8,8 @@ import static java.util.stream.Collectors.joining;
 
 public class BetterRomanNumbersConverter {
 
+    private static final int MIN_VALUE = 1;
+
     private static final int MAX_VALUE = 3999;
 
     private static final List<RomanValue> ROMAN_VALUES = Arrays.asList(
@@ -37,7 +39,7 @@ public class BetterRomanNumbersConverter {
     }
 
     private void validate(int arabicNumber) {
-        if (arabicNumber > MAX_VALUE) {
+        if (arabicNumber < MIN_VALUE || arabicNumber > MAX_VALUE) {
             throw new IllegalArgumentException("Value too high: " + arabicNumber);
         }
     }
