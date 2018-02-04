@@ -7,9 +7,9 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class BetterRomanNumbersConverterTest {
+class ArabicToRomanNumberConverterTest {
 
-    private final BetterRomanNumbersConverter testee = new BetterRomanNumbersConverter();
+    private final ArabicToRomanNumberConverter testee = new ArabicToRomanNumberConverter();
 
     @ParameterizedTest(name = "result of convertToToman({0}) is {1}")
     @CsvFileSource(resources = "/arabicToRomanNumbers.csv")

@@ -6,7 +6,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.joining;
 
-public class BetterRomanNumbersConverter {
+public class ArabicToRomanNumberConverter {
 
     private static final int MIN_VALUE = 1;
 
