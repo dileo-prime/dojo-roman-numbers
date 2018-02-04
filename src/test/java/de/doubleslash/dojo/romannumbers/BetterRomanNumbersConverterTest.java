@@ -11,19 +11,20 @@ class BetterRomanNumbersConverterTest {
 
     private final BetterRomanNumbersConverter testee = new BetterRomanNumbersConverter();
 
-    @ParameterizedTest(name = "convertToToman({0}) should be {1}")
+    @ParameterizedTest(name = "result of convertToToman({0}) is {1}")
     @CsvFileSource(resources = "/arabicToRomanNumbers.csv")
-    void paramTest(int arabicNumber, String expected) {
+    void convertToRomanReturnsExpectedResult(int arabicNumber, String expected) {
         assertEquals(expected, testee.convertToRoman(arabicNumber));
     }
 
     @Test
-    void invalidMinTest() {
+    void tooSmallArabicNumberThrowsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> testee.convertToRoman(0));
     }
 
     @Test()
-    void invalidMaxTest() {
+    void tooHighArabicNumberThrowsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> testee.convertToRoman(4000));
     }
+
 }
