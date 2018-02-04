@@ -1,12 +1,12 @@
 package de.doubleslash.dojo.romannumbers;
 
-public class RomanValue {
+public class RomanDigit {
 
     private String romanDigit;
 
     private Integer value;
 
-    RomanValue(String romanDigit, Integer value) {
+    RomanDigit(String romanDigit, Integer value) {
         this.romanDigit = romanDigit;
         this.value = value;
     }
@@ -15,7 +15,7 @@ public class RomanValue {
         return romanDigit;
     }
 
-    public Integer getValue() {
+    public Integer arabicValue() {
         return value;
     }
 
