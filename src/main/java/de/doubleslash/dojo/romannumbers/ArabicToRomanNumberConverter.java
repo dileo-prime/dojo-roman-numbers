@@ -34,7 +34,7 @@ public class ArabicToRomanNumberConverter {
         List<RomanDigit> romanDigits = romanValuesFromArabicNumber(arabicNumber);
 
         return romanDigits.stream()
-                .map(RomanDigit::getRomanDigit)
+                .map(RomanDigit::getDigit)
                 .collect(joining());
     }
 

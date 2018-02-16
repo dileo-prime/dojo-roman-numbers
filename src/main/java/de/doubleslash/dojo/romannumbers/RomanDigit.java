@@ -2,21 +2,21 @@ package de.doubleslash.dojo.romannumbers;
 
 public class RomanDigit {
 
-    private String romanDigit;
+    private String digit;
 
-    private Integer value;
+    private Integer arabicValue;
 
-    RomanDigit(String romanDigit, Integer value) {
-        this.romanDigit = romanDigit;
-        this.value = value;
+    RomanDigit(String digit, Integer value) {
+        this.digit = digit;
+        this.arabicValue = value;
     }
 
-    public String getRomanDigit() {
-        return romanDigit;
+    public String getDigit() {
+        return digit;
     }
 
     public Integer arabicValue() {
-        return value;
+        return arabicValue;
     }
 
 }
